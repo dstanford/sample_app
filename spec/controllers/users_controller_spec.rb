@@ -296,7 +296,7 @@ describe UsersController do
     end
   end
   
-    describe "DELETE 'destroy'" do
+  describe "DELETE 'destroy'" do
 
     before(:each) do
       @user = Factory(:user)
