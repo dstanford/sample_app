@@ -1,0 +1,19 @@
+<tr>
+  <td class="micropost">
+    <span class="content"><%= micropost.content %></span>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+    </span>
+  </td>
+<!-- next two lines are a workaround for a Rails 3.0 bug pointed out in Rails 3 Tutorial book. If bug has been fixed in latest version of rails, use if current_user?(micropost.user) instead of the next two lines
+-->
+  <% user = micropost.user rescue User.find(micropost.user_id) %> 
+  <% if current_user?(user) %>
+  <td>
+    <%= link_to "delete", micropost, :method => :delete,
+                                     :confirm => "You sure?",
+                                     :title => micropost.content %>
+  </td>
+  <% end %>
+</tr>
+
